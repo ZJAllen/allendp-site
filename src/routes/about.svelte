@@ -1,11 +1,10 @@
 <script>
+	import Construction from '$lib/components/Construction.svelte';
 	import Nav from '$lib/components/Nav.svelte';
 </script>
 
 <Nav pageTitle="About">
 	<div slot="content">
-		<div class="text-zinc-800 dark:text-zinc-100">
-			This page is under construction. Please check back again soon!
-		</div>
+		<Construction />
 	</div>
 </Nav>

@@ -41,15 +41,15 @@
 </script>
 
 <svelte:head>
-	<title>{pageTitle} | Allen Design & Prototype</title>
+	<title>{pageTitle} - Allen Design & Prototype</title>
 </svelte:head>
 <div>
 	<nav class="bg-zinc-100 dark:bg-zinc-800">
 		<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex items-center justify-between h-16">
-				<div class="flex items-center">
-					<div class="flex-shrink-0">
-						<svg
+				<div class="flex-shrink-0">
+					<a sveltekit:prefetch href="/"
+						><svg
 							class="h-10 w-10 text-zinc-900 fill-zinc-900 dark:text-zinc-100 dark:fill-zinc-100"
 							stroke="currentColor"
 							xmlns="http://www.w3.org/2000/svg"
@@ -74,26 +74,32 @@
 								stroke-width="0"
 							/>
 						</svg>
-						<!-- <img class="h-10" src="/logo-circle-dark.svg" alt="Allen Design and Prototype" /> -->
-					</div>
-					<div class="hidden md:block">
-						<div class="ml-10 flex items-baseline space-x-4">
-							{#each navLinks as navItem}
-								<a
-									sveltekit:prefetch
-									href={navItem.link}
-									class="{'/' + $page.path.split('/')[1] === navItem.link
-										? 'bg-zinc-300 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100'
-										: 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-500 dark:hover:bg-zinc-700 hover:text-zinc-200 dark:hover:text-zinc-100'} px-3 py-2 rounded-md text-sm font-medium"
-									aria-current="page">{navItem.title}</a
-								>
-							{/each}
-						</div>
-					</div>
+					</a>
+				</div>
+
+				<div class="hidden space-x-10 md:flex md:ml-10">
+					{#each navLinks as navItem}
+						<a
+							sveltekit:prefetch
+							href={navItem.link}
+							class="{'/' + $page.path.split('/')[1] === navItem.link
+								? 'bg-zinc-300 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100'
+								: 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-500 dark:hover:bg-zinc-700 hover:text-zinc-200 dark:hover:text-zinc-100'} px-3 py-2 rounded-md text-sm font-medium"
+							aria-current="page">{navItem.title}</a
+						>
+					{/each}
+				</div>
+				<div class="hidden md:flex md:items-center md:space-x-6">
+					<a
+						sveltekit:prefetch
+						href="/contact"
+						class="py-2 px-6 bg-zinc-100 dark:bg-zinc-500 border border-transparent rounded-md shadow-md dark:shadow-zinc-700 text-base font-medium text-zinc-600 dark:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-400"
+					>
+						Contact
+					</a>
 				</div>
 
 				<div class="-mr-2 flex md:hidden" bind:this={mobileMenu}>
-					<!-- Mobile menu button -->
 					<button
 						type="button"
 						class="bg-zinc-100 dark:bg-zinc-800 inline-flex items-center justify-center p-2 rounded-md text-zinc-700 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-50 hover:bg-zinc-200 dark:hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:ring-white"
@@ -102,11 +108,7 @@
 						on:click={toggleVisible}
 					>
 						<span class="sr-only">Open main menu</span>
-						<!--
-              Heroicon name: outline/menu
 
-              Menu open: "hidden", Menu closed: "block"
-            -->
 						<svg
 							class="{visible ? 'hidden' : 'show'} h-6 w-6"
 							xmlns="http://www.w3.org/2000/svg"
@@ -122,11 +124,7 @@
 								d="M4 6h16M4 12h16M4 18h16"
 							/>
 						</svg>
-						<!--
-              Heroicon name: outline/x
 
-              Menu open: "block", Menu closed: "hidden"
-            -->
 						<svg
 							class="{visible ? 'block' : 'hidden'} h-6 w-6"
 							xmlns="http://www.w3.org/2000/svg"
@@ -164,6 +162,15 @@
 							{navItem.title}
 						</a>
 					{/each}
+					<div class="mt-6 px-5">
+						<a
+							sveltekit:prefetch
+							href="/contact"
+							class="block text-center w-full py-2 px-4 border border-transparent rounded-md shadow bg-zinc-600 dark:bg-zinc-500 text-white dark:text-zinc-200 font-medium hover:bg-zinc-700 dark:hover:bg-zinc-400"
+						>
+							Contact
+						</a>
+					</div>
 				</div>
 			</div>
 		{/if}

@@ -6,8 +6,6 @@
 	export const baseURL = `${import.meta.env.VITE_SITE_URL}/contact`;
 	export const formEnd = import.meta.env.VITE_FORM_URL_ENDING;
 	export let submit = $page.query.get('submit');
-
-	console.log(baseURL);
 </script>
 
 <Nav pageTitle="Contact">
