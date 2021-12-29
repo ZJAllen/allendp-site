@@ -3,8 +3,11 @@
 	import Nav from '$lib/components/Nav.svelte';
 	import moment from 'moment';
 
-	export const baseURL = 'http://localhost:3000/contact';
+	export const baseURL = `${import.meta.env.VITE_SITE_URL}/contact`;
+	export const formEnd = import.meta.env.VITE_FORM_URL_ENDING;
 	export let submit = $page.query.get('submit');
+
+	console.log(baseURL);
 </script>
 
 <Nav pageTitle="Contact">
@@ -82,7 +85,7 @@
 				>
 					<div class="max-w-lg mx-auto lg:max-w-none">
 						<form
-							action="https://formsubmit.co/d78b565c4d11b3a57190c7408c09d6f2"
+							action={`https://formsubmit.co/${formEnd}`}
 							method="POST"
 							class="grid grid-cols-1 gap-y-6"
 						>
